@@ -63,4 +63,4 @@ Storing tokens in `localStorage` is simple and sufficient for this assignment, b
 - `/login` - sign in form
 - `/products` - product listing (grid, pagination, JO/SA location filter)
 - `/products/:id` - product details + Buy button
-- `/orders/:id` - receipt page
+- `/orders/:id` - receipt page 
