@@ -47,6 +47,37 @@
   border-color: var(--color-accent-green);
 }
 
+.login-password-wrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.login-password-wrapper .login-input {
+  margin-bottom: 0;
+  padding-right: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.login-password-toggle:hover {
+  color: var(--color-text-main);
+}
+
 .login-error {
   color: var(--color-brand-red);
   font-size: 0.85rem;

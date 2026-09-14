@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import apiClient, { getErrorMessage } from '../api/client'
 import Spinner from '../components/Spinner'
 import ErrorMessage from '../components/ErrorMessage'
+import { getItemImageUrl } from '../utils/itemImages'
 import './ProductDetails.css'
 
 function ProductDetails() {
@@ -13,6 +14,7 @@ function ProductDetails() {
   const [error, setError] = useState('')
   const [isBuying, setIsBuying] = useState(false)
   const [buyError, setBuyError] = useState('')
+  const [imageFailed, setImageFailed] = useState(false)
 
   useEffect(() => {
     let isCancelled = false
@@ -68,9 +70,25 @@ function ProductDetails() {
     return null
   }
 
+  const imageUrl = getItemImageUrl(product.title)
+
   return (
     <div className="details-page">
       <div className="details-card">
+        <div className="details-image-frame">
+          {imageUrl && !imageFailed ? (
+            <img
+              src={imageUrl}
+              alt={product.title}
+              className="details-image"
+              onError={() => setImageFailed(true)}
+            />
+          ) : (
+            <div className="details-image-placeholder">
+              <span className="details-image-placeholder-text">{product.title}</span>
+            </div>
+          )}
+        </div>
         <span className="details-badge">{product.location}</span>
         <h1 className="details-title">{product.title}</h1>
         <p className="details-description">{product.description}</p>

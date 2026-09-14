@@ -3,10 +3,38 @@ import { useNavigate } from 'react-router-dom'
 import apiClient, { getErrorMessage } from '../api/client'
 import Spinner from '../components/Spinner'
 import ErrorMessage from '../components/ErrorMessage'
+import { getItemImageUrl } from '../utils/itemImages'
 import './ProductListing.css'
 
 const PAGE_SIZE = 12
 const LOCATIONS = ['ALL', 'JO', 'SA']
+
+function ProductCard({ product, onClick }) {
+  const imageUrl = getItemImageUrl(product.title)
+  const [imageFailed, setImageFailed] = useState(false)
+
+  return (
+    <button type="button" className="product-card" onClick={onClick}>
+      <div className="product-image-frame">
+        {imageUrl && !imageFailed ? (
+          <img
+            src={imageUrl}
+            alt={product.title}
+            className="product-image"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <div className="product-image-placeholder">
+            <span className="product-image-placeholder-text">{product.title}</span>
+          </div>
+        )}
+      </div>
+      <span className="product-title">{product.title}</span>
+      <span className="product-price">${product.price}</span>
+      <span className="product-badge">{product.location}</span>
+    </button>
+  )
+}
 
 function ProductListing() {
   const navigate = useNavigate()
@@ -81,16 +109,11 @@ function ProductListing() {
       ) : (
         <div className="product-grid">
           {data.results.map((product) => (
-            <button
+            <ProductCard
               key={product.id}
-              type="button"
-              className="product-card"
+              product={product}
               onClick={() => navigate(`/products/${product.id}`)}
-            >
-              <span className="product-title">{product.title}</span>
-              <span className="product-price">${product.price}</span>
-              <span className="product-badge">{product.location}</span>
-            </button>
+            />
           ))}
         </div>
       )}
