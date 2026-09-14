@@ -1,0 +1,29 @@
+.spinner-wrap {
+  align-items: center;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.spinner {
+  animation: spinner-rotate 0.8s linear infinite;
+  border: 3px solid var(--color-surface-hover);
+  border-radius: 50%;
+  border-top-color: var(--color-accent-green);
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+}
+
+.spinner-label {
+  font-size: 0.9rem;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

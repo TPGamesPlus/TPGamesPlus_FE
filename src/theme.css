@@ -1,0 +1,19 @@
+:root {
+  /* Brand & Accent Colors */
+  --color-brand-red: #E52E2E;      /* Logo symbol red */
+  --color-accent-green: #00C288;   /* Primary CTAs, "Sign In" button, badges */
+  --color-accent-hover: #00A875;   /* CTA hover state */
+
+  /* Dark Theme Backgrounds & Surfaces */
+  --color-bg: #0C0E1E;            /* Deep navy main background */
+  --color-surface: #151830;       /* Banners, product cards, input fields */
+  --color-surface-hover: #1E2243; /* Card and container hover state */
+
+  /* Typography */
+  --color-text-main: #FFFFFF;     /* Headings, titles, and main text */
+  --color-text-muted: #8E94B2;    /* Muted text, search placeholders, metadata */
+
+  /* UI Geometry */
+  --radius-card: 16px;            /* Hero banners and feature cards */
+  --radius-btn: 10px;             /* Buttons, inputs, and tags */
+}
